@@ -46,7 +46,7 @@ input, input:focus-visible {
 .btn {
     transition: all .4s;
     padding: 10px 25px;
-    border: 1px solid #606060;
+    border: 1px solid #bfbfbf;
     border-radius: 10px;
     cursor: pointer;
 }
