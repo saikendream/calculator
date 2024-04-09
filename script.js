@@ -19,5 +19,6 @@ function forceCaret () {
 textField.addEventListener("input", function(e) {
     let pattern = /[\sa-zA-Z]+/g; // Sets the pattern to grab every alphabet and space character
     textField.textContent = textField.textContent.replace(pattern, ''); // Erases what matches PATTERN
+    textField.innerHTML = textField.innerHTML.replace('+', '<i class="fa-solid fa-plus"></i>');
     forceCaret();
 });
