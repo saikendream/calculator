@@ -28,6 +28,12 @@ body {
     color: #b9b9b9; 
 }
 
+#digits i {
+    font-size: .8em;
+    color: #2277ff;
+    margin: auto 15px;
+}
+
 #toolbar {
     display: flex;
     position: fixed;
