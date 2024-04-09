@@ -10,7 +10,7 @@ body {
     align-items: center;
 }
 
-input, input:focus-visible {
+#digits, #digits:focus-visible {
     height: 150px;
     width: 80%;
     font-family: 'Poppins', sans-serif;
@@ -19,6 +19,13 @@ input, input:focus-visible {
     border-width: 0px;
     border-bottom: 3px solid rgb(209, 209, 209);
     outline: none;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#digits[placeholder]:empty:before {
+    content: attr(placeholder);
+    color: #b9b9b9; 
 }
 
 #toolbar {
