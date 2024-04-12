@@ -21,6 +21,12 @@ body {
     outline: none;
     overflow: hidden;
     white-space: nowrap;
+    transition: all .7s;
+}
+
+#digits:focus-visible {
+    transition: all .7s;
+    border-bottom: 3px solid #22ff94;
 }
 
 #digits[placeholder]:empty:before {
