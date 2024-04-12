@@ -16,16 +16,18 @@ function forceCaret () {
 // DIV INPUT MANIPULATION
 
 textField.addEventListener("input", function(e) {
-    const pattern = new RegExp("[^0-9]"); // Sets the pattern to grab every alphabet and space character
-    const isNum = new RegExp("[0-9]");
+    const pattern = new RegExp("[^0-9\,\.]"); // Sets the pattern to grab every number
+    textField.textContent = textField.textContent.replace(pattern, ''); // Ignores every character but digits
+    forceCaret(); // Force caret to the end of the input value
+});
 
-    const n1 = document.createElement("span");
-    n1.setAttribute("id", "n1")
+// This idea is not working. I'll try another method.
 
+/*
     const i = document.createElement("i");
     i.classList.add("fa-solid");
-    
-    if(!isNaN(e.data)) {
+
+if(!isNaN(e.data)) {
         console.log("Input is a number");
         n1.textContent += e.data;
         textField.textContent = textField.textContent.replace(isNum, '');
@@ -49,7 +51,7 @@ textField.addEventListener("input", function(e) {
         //textField.innerHTML = textField.innerHTML.replace('/', '<i class="fa-solid fa-divide"></i>');
     } else { console.log('error'); textField.textContent = textField.textContent.replace(pattern, ''); };
     
-    /* else if(isNum.test(e.data)) {
+    else if(isNum.test(e.data)) {
         console.log("e.data is a number");
         const n = document.createElement("span");
         n.textContent = e.data;
@@ -60,9 +62,6 @@ textField.addEventListener("input", function(e) {
     } else if(pattern.test(e.data)) {
         textField.textContent = '';
         forceCaret();
-    }; */
+    };
     
-    forceCaret();
-});
-
-// This idea is not working. I'll try another method.
+*/
