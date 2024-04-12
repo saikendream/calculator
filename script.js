@@ -14,6 +14,22 @@ let n1 = 0;
 let n2 = 0;
 let op = "";
 
+// PAGE EFFECTS
+
+function inputError () {
+    const errorMsg = document.createElement("p");
+    errorMsg.classList.add("error");
+    errorMsg.textContent = "Operation invalid";
+    document.body.appendChild(errorMsg);
+    errorMsg.classList.add("visible");
+    textField.classList.add("invalid");
+    setTimeout(() => {
+        textField.classList.remove("invalid");
+        errorMsg.classList.remove("visible");
+        setTimeout(() => { errorMsg.remove(); }, 10)
+    }, 3000);
+};
+
 // FORCE CARET TO THE END OF INPUT (https://phuoc.ng/collection/html-dom/move-the-cursor-to-the-end-of-a-content-editable-element/)
 
 function forceCaret () {
@@ -40,7 +56,12 @@ clearBtn.addEventListener("click", function(e) {
     textField.innerHTML = "";
 });
 
-
+plusBtn.addEventListener("click", function(e) {
+    console.log('PLUS clicked');
+    if(textField.innerHTML === '') {
+        inputError();
+    } else { console.log("Function runing"); };
+});
 
 
 // This idea is not working. I'll try another method.
