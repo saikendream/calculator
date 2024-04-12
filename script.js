@@ -1,6 +1,12 @@
 // SELECTORS
 
 const textField = document.querySelector("#digits");
+const clearBtn = document.querySelector("#c-btn");
+const plusBtn = document.querySelector("#pl-btn");
+const minusBtn = document.querySelector("#mn-btn");
+const timesBtn = document.querySelector("#mp-btn");
+const obelusBtn = document.querySelector("#dv-btn");
+const equalBtn = document.querySelector("#eq-btn");
 
 // FORCE CARET TO THE END OF INPUT (https://phuoc.ng/collection/html-dom/move-the-cursor-to-the-end-of-a-content-editable-element/)
 
@@ -20,6 +26,8 @@ textField.addEventListener("input", function(e) {
     textField.textContent = textField.textContent.replace(pattern, ''); // Ignores every character but digits
     forceCaret(); // Force caret to the end of the input value
 });
+
+
 
 // This idea is not working. I'll try another method.
 
