@@ -8,6 +8,12 @@ const timesBtn = document.querySelector("#mp-btn");
 const obelusBtn = document.querySelector("#dv-btn");
 const equalBtn = document.querySelector("#eq-btn");
 
+// VARIABLES
+
+let n1 = 0;
+let n2 = 0;
+let op = "";
+
 // FORCE CARET TO THE END OF INPUT (https://phuoc.ng/collection/html-dom/move-the-cursor-to-the-end-of-a-content-editable-element/)
 
 function forceCaret () {
@@ -26,6 +32,14 @@ textField.addEventListener("input", function(e) {
     textField.textContent = textField.textContent.replace(pattern, ''); // Ignores every character but digits
     forceCaret(); // Force caret to the end of the input value
 });
+
+// BUTTONS
+
+clearBtn.addEventListener("click", function(e) {
+    console.log('CLEAR clicked');
+    textField.innerHTML = "";
+});
+
 
 
 
