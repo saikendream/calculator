@@ -16,12 +16,22 @@ function forceCaret () {
 // DIV INPUT MANIPULATION
 
 textField.addEventListener("input", function(e) {
-    let pattern = new RegExp("[^0-9]"); // Sets the pattern to grab every alphabet and space character
-    let isNum = new RegExp("[0-9]");
+    const pattern = new RegExp("[^0-9]"); // Sets the pattern to grab every alphabet and space character
+    const isNum = new RegExp("[0-9]");
+
+    const n1 = document.createElement("span");
+    n1.setAttribute("id", "n1")
+
     const i = document.createElement("i");
-    i.classList.add("fa-solid")
-    if(e.data == "+") {
-        textField.textContent = textField.textContent.replace("+", '');
+    i.classList.add("fa-solid");
+    
+    if(!isNaN(e.data)) {
+        console.log("Input is a number");
+        n1.textContent += e.data;
+        textField.textContent = textField.textContent.replace(isNum, '');
+        textField.appendChild(n1);
+    } else if(e.data == "+") {
+        // textField.textContent = textField.textContent.replace("+", '');
         i.classList.add("fa-plus");
         textField.appendChild(i);
     } else if(e.data == "-") {
@@ -37,7 +47,7 @@ textField.addEventListener("input", function(e) {
         i.classList.add("fa-divide");
         textField.appendChild(i);
         //textField.innerHTML = textField.innerHTML.replace('/', '<i class="fa-solid fa-divide"></i>');
-    } else { textField.textContent = textField.textContent.replace(pattern, ''); };
+    } else { console.log('error'); textField.textContent = textField.textContent.replace(pattern, ''); };
     
     /* else if(isNum.test(e.data)) {
         console.log("e.data is a number");
@@ -54,3 +64,5 @@ textField.addEventListener("input", function(e) {
     
     forceCaret();
 });
+
+// This idea is not working. I'll try another method.
