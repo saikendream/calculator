@@ -21,13 +21,15 @@ function inputError () {
     errorMsg.classList.add("error");
     errorMsg.textContent = "Operation invalid";
     document.body.appendChild(errorMsg);
-    errorMsg.classList.add("visible");
     textField.classList.add("invalid");
     setTimeout(() => {
-        textField.classList.remove("invalid");
-        errorMsg.classList.remove("visible");
-        setTimeout(() => { errorMsg.remove(); }, 10)
-    }, 3000);
+        errorMsg.classList.add("visible");
+        setTimeout(() => {
+            textField.classList.remove("invalid");
+            errorMsg.classList.remove("visible");
+            setTimeout(() => { errorMsg.remove(); }, 1000);
+        }, 1000);
+    }, 50);
 };
 
 // FORCE CARET TO THE END OF INPUT (https://phuoc.ng/collection/html-dom/move-the-cursor-to-the-end-of-a-content-editable-element/)
