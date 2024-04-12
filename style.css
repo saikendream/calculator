@@ -34,6 +34,19 @@ body {
     color: #b9b9b9; 
 }
 
+@keyframes error-alert {
+    0% { transform: translateX(0) }
+    25% { transform: translateX(5px) }
+    50% { transform: translateX(-5px) }
+    75% { transform: translateX(5px) }
+    100% { transform: translateX(0) }
+}
+.invalid {
+    transition: all .4s;
+    animation: error-alert .2s;
+    border-bottom: 3px solid #930d0d !important;
+}
+
 #digits i {
     font-size: .8em;
     color: #2277ff;
