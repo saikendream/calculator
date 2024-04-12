@@ -1,3 +1,5 @@
+/* GENERAL */
+
 body {
     font-family: 'Poppins', sans-serif;
 }
@@ -9,6 +11,8 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+/* DIV INPUT */
 
 #digits, #digits:focus-visible {
     height: 150px;
@@ -41,6 +45,7 @@ body {
     75% { transform: translateX(5px) }
     100% { transform: translateX(0) }
 }
+
 .invalid {
     transition: all .4s;
     animation: error-alert .2s;
@@ -53,8 +58,10 @@ body {
     margin: auto 15px;
 }
 
+/* TOOLBAR */
+
 #toolbar {
-    display: flex;
+    display: flex !important;
     position: fixed;
     bottom: 0;
     margin: 25px auto;
@@ -75,6 +82,8 @@ body {
     opacity: 1;
 }
 
+/* BUTTONS */
+
 .btn {
     transition: all .4s;
     padding: 10px 25px;
@@ -87,4 +96,23 @@ body {
     transition: all .4s;
     border: 1px solid #2a3439;
     box-shadow: 0 0 5px #555555;
+}
+
+/* ERROR MESSAGE */
+
+.error {
+    position: absolute;
+    top: 75%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    font-size: 2em;
+    opacity: 0;
+    transition: all .4s;
+    text-align: center;
+}
+
+.visible {
+    transition: all .4s;
+    opacity: 1;
 }
