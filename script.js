@@ -41,7 +41,7 @@ function inputError() {
 // DIGITS
 
 function typeDigit(e) {
-    const pattern = new RegExp("[^0-9\,\.\-]"); // Sets the pattern to grab every number
+    const pattern = new RegExp("[^0-9\.\-]"); // Sets the pattern to grab every number
 
     if(pattern.test(e.key)) {
         //ignores invalid digits
