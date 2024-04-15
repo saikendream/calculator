@@ -28,7 +28,7 @@ body {
     transition: all .7s;
 }
 
-#digits:focus-visible {
+#digits:focus {
     transition: all .7s;
     border-bottom: 3px solid #22ff94;
 }
