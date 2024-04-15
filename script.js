@@ -45,7 +45,7 @@ function typeDigit(e) {
 
     if(pattern.test(e.key)) {
         //ignores invalid digits
-    } else if(n1 === 0) {
+    } else if(n1 === 0 || op == "") {
         if(textField.textContent == "") {
             const numA = document.createElement("span");
             numA.setAttribute("id", "n1");
@@ -82,18 +82,7 @@ function fillVariables() {
 };
 
 function addNum(n1, n2) {
-    let result = n1 + n2;
-};
-
-// FORCE CARET TO THE END OF INPUT (https://phuoc.ng/collection/html-dom/move-the-cursor-to-the-end-of-a-content-editable-element/)
-
-function forceCaret () {
-    const range = document.createRange(); // Sets the RANGE
-    const selection = window.getSelection(); // Watches the selection
-    range.setStart(textField, textField.childNodes.length); // Sets the start and end
-    range.collapse(true); // Sets the endpoint = start point
-    selection.removeAllRanges(); // Delete all ranges
-    selection.addRange(range); // Sets the new range to the SELECTION
+    return n1 + n2;
 };
  
 // DIV INPUT MANIPULATION
@@ -103,92 +92,78 @@ textField.addEventListener("click", function(e) {
     textField.focus();
 });
 
-/*
-textField.addEventListener("input", function(e) {
-    const pattern = new RegExp("[^0-9\,\.\-]"); // Sets the pattern to grab every number
-    if(n1 == 0) {
-        inputNumA.textContent = inputNumA.textContent.replace(pattern, ''); // Ignores every character but digits
+function showResults(number) {
+    let onGoing = true;
+    op = "";
+
+    if(!!document.getElementById("history")) {
+        // Creates RESULT element
+        const res = document.createElement("div");
+        res.classList.add("result");
+        res.textContent = document.getElementById("n1").textContent;
+        document.getElementById("history").lastChild.appendChild(res);
+
+        const operation = document.createElement("div");
+        operation.classList.add("operation");
+        const equation = document.createElement("div");
+        equation.classList.add("equation")
+        document.getElementById("n1").removeAttribute('id');
+        document.getElementById("n2").removeAttribute('id');
+        equation.innerHTML = textField.innerHTML;
+        operation.appendChild(equation);
+        document.getElementById("history").appendChild(operation);
+
+        // Updates INPUT to result
+        textField.innerHTML = `<span id="n1">${number}</span>`;
     } else {
-        let selectedInput = window.getSelection();
-        let node = selectedInput.focusNode.parentNode;
-        let fullInput = node.innerHTML;
+        // Creates history board
+        const historyBoard = document.createElement("div");
+        historyBoard.id = "history"
+        const operation = document.createElement("div");
+        operation.classList.add("operation");
+        const equation = document.createElement("div");
+        equation.classList.add("equation")
+        document.getElementById("n1").removeAttribute('id');
+        document.getElementById("n2").removeAttribute('id');
+        equation.innerHTML = textField.innerHTML;
+        operation.appendChild(equation);
+        historyBoard.appendChild(operation);
+        document.body.appendChild(historyBoard);
 
-        const inputNumB = document.createElement("span");
-        inputNumB.setAttribute("id", "n2")
-
-
-        node.replaceWith(inputNumB);
-        inputNumB.textContent = inputNumB.textContent.replace(pattern, ''); // Ignores every character but digits
-    };
-    forceCaret(); // Force caret to the end of the input value
-});
-*/
+        // Updates INPUT to result
+        textField.innerHTML = `<span id="n1">${number}</span>`;
+    }
+};
 
 // BUTTONS
 
 clearBtn.addEventListener("click", function(e) {
     console.log('CLEAR clicked');
     textField.innerHTML = "";
+    document.getElementById("history").remove();
     n1 = 0;
     n2 = 0;
     op = "";
 });
 
+equalBtn.addEventListener("click", function(e) {
+    fillVariables();
+
+    if(op == "plus") {
+        n1 = addNum(n1, n2);
+        showResults(n1);
+    }
+});
+
 plusBtn.addEventListener("click", function(e) {
     console.log('PLUS clicked');
-    op = "plus"
     if(textField.innerHTML === '') {
         inputError();
     } else {
-        console.log("Function runing");
+        console.log("PLUS runing");
         fillVariables();
         i.classList.add("fa-plus");
         textField.appendChild(i);
+        op = "plus"
     };
 });
-
-
-// This idea is not working. I'll try another method.
-
-/*
-    const i = document.createElement("i");
-    i.classList.add("fa-solid");
-
-if(!isNaN(e.data)) {
-        console.log("Input is a number");
-        n1.textContent += e.data;
-        textField.textContent = textField.textContent.replace(isNum, '');
-        textField.appendChild(n1);
-    } else if(e.data == "+") {
-        // textField.textContent = textField.textContent.replace("+", '');
-        i.classList.add("fa-plus");
-        textField.appendChild(i);
-    } else if(e.data == "-") {
-        textField.textContent = textField.textContent.replace("-", '');
-        i.classList.add("fa-minus");
-        textField.appendChild(i);
-        //textField.innerHTML = textField.innerHTML.replace('-', '<i class="fa-solid fa-minus"></i>');
-    } else if(e.data == "*") {
-        i.classList.add("fa-xmark");
-        textField.appendChild(i);
-        //textField.innerHTML = textField.innerHTML.replace('*', '<i class="fa-solid fa-xmark"></i>');
-    } else if(e.data == "/") {
-        i.classList.add("fa-divide");
-        textField.appendChild(i);
-        //textField.innerHTML = textField.innerHTML.replace('/', '<i class="fa-solid fa-divide"></i>');
-    } else { console.log('error'); textField.textContent = textField.textContent.replace(pattern, ''); };
-    
-    else if(isNum.test(e.data)) {
-        console.log("e.data is a number");
-        const n = document.createElement("span");
-        n.textContent = e.data;
-
-        textField.appendChild(n);
-        textField.textContent = ''; // Erases what matches PATTERN
-        forceCaret();
-    } else if(pattern.test(e.data)) {
-        textField.textContent = '';
-        forceCaret();
-    };
-    
-*/
