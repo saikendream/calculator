@@ -116,3 +116,51 @@ body {
     transition: all .4s;
     opacity: 1;
 }
+
+/* HISTORY BOARD */
+
+#history {
+    display: flex;
+    height: 200px;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 80%;
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    font-size: 2em;
+    transition: all .4s;
+    text-align: right;
+    overflow: scroll;
+}
+
+#history::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(white 2%, transparent);
+}
+
+.equation {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: #a2ceed;
+}
+
+.equation i {
+    margin: 0 5px;
+    font-size: 16px;
+}
+
+.result {
+    margin: -5px 0;
+    font-size: 1em;
+    color: #939393;
+}
