@@ -140,7 +140,9 @@ function showResults(number) {
 clearBtn.addEventListener("click", function(e) {
     console.log('CLEAR clicked');
     textField.innerHTML = "";
-    document.getElementById("history").remove();
+    if(document.getElementById("history")) {
+        document.getElementById("history").remove()
+    };
     n1 = 0;
     n2 = 0;
     op = "";
@@ -159,6 +161,15 @@ plusBtn.addEventListener("click", function(e) {
     console.log('PLUS clicked');
     if(textField.innerHTML === '') {
         inputError();
+    } else if(document.getElementById("n2")) {
+        if(this !== "") {
+            fillVariables();
+            n1 = addNum(n1, n2);
+            showResults(n1);
+            i.classList.add("fa-plus");
+            textField.appendChild(i);
+            op = "plus"
+        };
     } else {
         console.log("PLUS runing");
         fillVariables();
