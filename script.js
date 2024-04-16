@@ -160,6 +160,24 @@ function calculate(operation, func) {
     console.log(`${operation} clicked`);
     if(textField.innerHTML === '') {
         inputError();
+    } else if(op !== operation && op !== "") {
+        console.log("op is different");
+        fillVariables();
+        if(op == "plus") {
+            n1 = addNum(n1, n2);
+        } else if(op == "minus") {
+            n1 = subNum(n1, n2);
+        } else if(op == "xmark") {
+            n1 = mulNum(n1, n2);
+        } else if(op == "divide") {
+            n1 = divNum(n1, n2);
+        } else { inputError(); };
+        showResults(n1);
+        removeOperator();
+        i.classList.add(`fa-${operation}`);
+        textField.appendChild(i);
+        fillVariables();
+        op = operation;
     } else if(document.getElementById("n2")) {
         if(document.getElementById("n2").textContent !== "") {
             fillVariables();
@@ -168,7 +186,7 @@ function calculate(operation, func) {
             removeOperator();
             i.classList.add(`fa-${operation}`);
             textField.appendChild(i);
-            op = operation
+            op = operation;
         };
     } else {
         console.log(`${operation} runing`);
@@ -176,8 +194,9 @@ function calculate(operation, func) {
         removeOperator();
         i.classList.add(`fa-${operation}`);
         textField.appendChild(i);
-        op = operation
+        op = operation;
     };
+    console.log(op);
 };
 
 // BUTTONS
