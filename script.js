@@ -147,6 +147,13 @@ function showResults(number) {
     }
 };
 
+function removeOperator() {
+    if(i.classList.length > 1) { // If item has more than ONE class
+        let lastClass = i.classList.length - 1; // Gets last class index
+        i.classList.remove(i.classList[lastClass]); // Removes last class
+    }
+};
+
 // MATH
 
 function calculate(operation, func) {
@@ -158,6 +165,7 @@ function calculate(operation, func) {
             fillVariables();
             n1 = func(n1, n2);
             showResults(n1);
+            removeOperator();
             i.classList.add(`fa-${operation}`);
             textField.appendChild(i);
             op = operation
@@ -165,6 +173,7 @@ function calculate(operation, func) {
     } else {
         console.log(`${operation} runing`);
         fillVariables();
+        removeOperator();
         i.classList.add(`fa-${operation}`);
         textField.appendChild(i);
         op = operation
