@@ -182,3 +182,6 @@ equalBtn.addEventListener("click", function(e) {
 });
 
 plusBtn.addEventListener("click", function(e) { calculate("plus", addNum); });
+minusBtn.addEventListener("click", function(e) { calculate("minus", subNum) });
+timesBtn.addEventListener("click", function(e) { calculate("xmark", mulNum) });
+obelusBtn.addEventListener("click", function(e) { calculate("divide", divNum) });
