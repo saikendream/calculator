@@ -84,6 +84,18 @@ function fillVariables() {
 function addNum(n1, n2) {
     return n1 + n2;
 };
+
+function subNum(n1, n2) {
+    return n1 - n2;
+};
+
+function mulNum(n1, n2) {
+    return n1 * n2;
+};
+
+function divNum(n1, n2) {
+    return n1 / n2;
+};
  
 // DIV INPUT MANIPULATION
 
@@ -178,7 +190,16 @@ equalBtn.addEventListener("click", function(e) {
     if(op == "plus") {
         n1 = addNum(n1, n2);
         showResults(n1);
-    }
+    } else if(op == "minus") {
+        n1 = subNum(n1, n2);
+        showResults(n1);
+    } else if(op == "xmark") {
+        n1 = mulNum(n1, n2);
+        showResults(n1);
+    } else if(op == "divide") {
+        n1 = divNum(n1, n2);
+        showResults(n1);
+    } 
 });
 
 plusBtn.addEventListener("click", function(e) { calculate("plus", addNum); });
