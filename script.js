@@ -135,6 +135,30 @@ function showResults(number) {
     }
 };
 
+// MATH
+
+function calculate(operation, func) {
+    console.log(`${operation} clicked`);
+    if(textField.innerHTML === '') {
+        inputError();
+    } else if(document.getElementById("n2")) {
+        if(document.getElementById("n2").textContent !== "") {
+            fillVariables();
+            n1 = func(n1, n2);
+            showResults(n1);
+            i.classList.add(`fa-${operation}`);
+            textField.appendChild(i);
+            op = operation
+        };
+    } else {
+        console.log(`${operation} runing`);
+        fillVariables();
+        i.classList.add(`fa-${operation}`);
+        textField.appendChild(i);
+        op = operation
+    };
+};
+
 // BUTTONS
 
 clearBtn.addEventListener("click", function(e) {
@@ -157,24 +181,4 @@ equalBtn.addEventListener("click", function(e) {
     }
 });
 
-plusBtn.addEventListener("click", function(e) {
-    console.log('PLUS clicked');
-    if(textField.innerHTML === '') {
-        inputError();
-    } else if(document.getElementById("n2")) {
-        if(this !== "") {
-            fillVariables();
-            n1 = addNum(n1, n2);
-            showResults(n1);
-            i.classList.add("fa-plus");
-            textField.appendChild(i);
-            op = "plus"
-        };
-    } else {
-        console.log("PLUS runing");
-        fillVariables();
-        i.classList.add("fa-plus");
-        textField.appendChild(i);
-        op = "plus"
-    };
-});
+plusBtn.addEventListener("click", function(e) { calculate("plus", addNum); });
