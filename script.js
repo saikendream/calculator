@@ -71,14 +71,11 @@ window.addEventListener('keydown', typeDigit)
 // OPERATORS
 
 function fillVariables() {
-    console.log("fillVariables running")
     if(n1 == 0) {
         n1 = +textField.textContent;
-        console.log(`n1 is ${n1}, a ${typeof n1}`);
     } else if(op != "") {
         n2 = +document.getElementById("n2").textContent;
-        console.log(`n2 is ${n2}, a ${typeof n2}`);
-    } else { console.log("n1 is filled") };
+    };
 };
 
 function addNum(n1, n2) {
@@ -100,7 +97,6 @@ function divNum(n1, n2) {
 // DIV INPUT MANIPULATION
 
 textField.addEventListener("click", function(e) {
-    console.log("textField clicked");
     textField.focus();
 });
 
@@ -157,11 +153,9 @@ function removeOperator() {
 // MATH
 
 function calculate(operation, func) {
-    console.log(`${operation} clicked`);
     if(textField.innerHTML === '') {
         inputError();
     } else if(op !== operation && op !== "") {
-        console.log("op is different");
         fillVariables();
         if(op == "plus") {
             n1 = addNum(n1, n2);
@@ -189,20 +183,17 @@ function calculate(operation, func) {
             op = operation;
         };
     } else {
-        console.log(`${operation} runing`);
         fillVariables();
         removeOperator();
         i.classList.add(`fa-${operation}`);
         textField.appendChild(i);
         op = operation;
     };
-    console.log(op);
 };
 
 // BUTTONS
 
 clearBtn.addEventListener("click", function(e) {
-    console.log('CLEAR clicked');
     textField.innerHTML = "";
     if(document.getElementById("history")) {
         document.getElementById("history").remove()
